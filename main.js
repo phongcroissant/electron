@@ -89,7 +89,7 @@ app.on('window-all-closed',() => {
 })
 
 // Ecouter sur le canal "get-versions"
-ipcMain.handle('get-versions', ()=> {
+ipcMain.handle('get-version', ()=> {
     // Renvoyer un objet contenant les versions des outils
     return{
         electron: process.versions.electron,
