@@ -3,13 +3,15 @@
 const {app, BrowserWindow} = require("electron")
 
 // Créer la fenetre principal
+const path= require("path")
 function createWindow(){
     const window = new BrowserWindow({
         width: 800,
         height : 600,
         webPreferences : {
-            nodeIntegration : true, // Acces au API Node depuis notre processus de rendu
-            contextIsolation : false
+            nodeIntegration : false, // Acces au API Node depuis notre processus de rendu
+            contextIsolation : true,
+            preload: path.join(__dirname,'src/js/preload.js')
         }
     })
 
