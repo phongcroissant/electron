@@ -6,4 +6,10 @@ contextBridge.exposeInMainWorld('version',{
     // Fonction qui récupère les version via IPC
     getVersion: () => ipcRenderer.invoke('get-version')
 })
+
+contextBridge.exposeInMainWorld('todoapi',{
+    // Fonction qui récupère la liste des taches via IPC
+    getAll: () => ipcRenderer.invoke('todos:getAll')
+})
+
 console.log("Preload chargé avec succès")
