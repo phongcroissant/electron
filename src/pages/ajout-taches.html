@@ -10,6 +10,23 @@
     <title>Document</title>
 </head>
 <body>
+<button id="refresh" onclick="document.location.reload(false)"> Rafraichir </button>
 <h1 class="text-center"> Ajout d'une tache</h1>
+<form class="m-3" id="todosForm" method="post">
+    <div class="mb-3">
+        <label for="titre" class="form-label">Titre</label>
+        <input type="text" class="form-control" id="titre" aria-describedby="emailHelp" required>
+    </div>
+    <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input type="datetime-local" class="form-control" id="date">
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="termine">
+        <label class="form-check-label" for="termine">Terminé ?</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
+<script src="../js/ajoutTaches.js"></script>
 </body>
 </html>

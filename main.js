@@ -146,3 +146,23 @@ ipcMain.handle('todos:getAll', async ()=> {
         return [] // Retourne une promesse avec un tableau vide
     }
 })
+
+async function addTodos(titre) {
+    try {
+        const [resultat] = await pool.query('INSERT INTO todos(titre,termine) VALUES(?,?)',[titre,0])
+        return;
+    } catch (error){
+        console.log('Erreur lors de l\'insertion de données')
+        throw error // Retourner donc une promesse qui ne va pas être résolue
+    }
+}
+ipcMain.handle('todos:addTodos', async (event,titre)=> {
+    // Récupérer la liste des taches dans la base de données avec mysql
+    try {
+        await addTodos(titre) // Retourne une promesse avec un résultat
+        return {success : true}
+    }catch (error) {
+        dialog.showErrorBox('Erreur Technique','Impossible d\'ajouter une tâche')
+        throw error // Retourne une promesse avec un tableau vide
+    }
+})
